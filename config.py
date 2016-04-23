@@ -1,3 +1,5 @@
+#_*_coding: utf-8 _*_
+
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -8,7 +10,8 @@ class Config:
     FLASKY_MAIL_SENDER = 'Flasky Admin shenmj053@163.com'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
-    @stacticmethod
+    #类方法,对当前环境的配置初始化Config.init_app
+    @staticmethod
     def init_app(app):
         pass
 
