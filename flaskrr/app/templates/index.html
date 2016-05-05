@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}HOMELAND{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Hello,
+        {% if current_user.is_authenticated %}
+            {{ current_user.username }}
+        {% else %}
+            Stranger
+        {% endif %}!
+    </h1>
+
+</div>
+{% if current_user.is_authenticated %}
+<p>Need change your password?
+    <a href="{{ url_for('auth.change_password') }}">Click here</a>
+</p>
+<p>Need change your email?
+    <a href="{{ url_for('auth.change_email_request') }}">Click here</a>
+</p>
+
+{% endif %}
+
+<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
+<p>That was {{ moment(current_time).fromNow(refresh=True) }}.</p>
+{% endblock %}
